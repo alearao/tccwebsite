@@ -1,54 +1,87 @@
 // Newsletter form submission
-document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('input[type="email"]').value;
-    window.location.href = `mailto:tuftsconsultingcollectiveinfo@151208122.mailchimpapp.com?subject=Newsletter%20Subscription&body=Email:%20${email}`;
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('newsletter-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            window.location.href = `mailto:tuftsconsultingcollectiveinfo@151208122.mailchimpapp.com?subject=Newsletter%20Subscription&body=Email:%20${email}`;
+        });
+    }
 });
 
-// Carousel functionality
-let currentSlideIndex = 0;
-const totalSlides = 2;
+// Client Testimonials Carousel
+let currentClientSlide = 0;
+const totalClientSlides = 2;
 
-function showSlide(index) {
-    const track = document.getElementById('testimonial-track');
-    const indicators = document.querySelectorAll('.indicator');
+function showClientSlide(index) {
+    const track = document.getElementById('clientTrack');
+    const dots = document.querySelectorAll('.client-testimonials .dot');
     
     if (!track) return;
     
     // Update slide position
     track.style.transform = `translateX(-${index * 50}%)`;
     
+    // Update dots
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+    
+    currentClientSlide = index;
+}
+
+function nextClientSlide() {
+    const nextIndex = (currentClientSlide + 1) % totalClientSlides;
+    showClientSlide(nextIndex);
+}
+
+function prevClientSlide() {
+    const prevIndex = (currentClientSlide - 1 + totalClientSlides) % totalClientSlides;
+    showClientSlide(prevIndex);
+}
+
+// Auto-advance client testimonials
+let clientAutoTimer;
+
+function startClientAuto() {
+    clientAutoTimer = setInterval(nextClientSlide, 8000);
+}
+
+function stopClientAuto() {
+    clearInterval(clientAutoTimer);
+}
+
+// Student Testimonials Carousel functionality
+let currentTestimonialIndex = 0;
+const totalTestimonials = 5;
+
+function showTestimonial(index) {
+    const track = document.getElementById('carouselTrack');
+    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+    
+    if (!track) return;
+    
+    // Calculate the transform value (move by 20% for each slide since each slide is 20% wide)
+    const translateX = -index * 20;
+    track.style.transform = `translateX(${translateX}%)`;
+    
     // Update indicators
     indicators.forEach((indicator, i) => {
         indicator.classList.toggle('active', i === index);
     });
     
-    currentSlideIndex = index;
+    currentTestimonialIndex = index;
 }
 
-function nextSlide() {
-    const nextIndex = (currentSlideIndex + 1) % totalSlides;
-    showSlide(nextIndex);
+function nextTestimonial() {
+    const nextIndex = (currentTestimonialIndex + 1) % totalTestimonials;
+    showTestimonial(nextIndex);
 }
 
-function previousSlide() {
-    const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
-    showSlide(prevIndex);
-}
-
-function currentSlide(index) {
-    showSlide(index - 1);
-}
-
-// Auto-advance carousel every 7 seconds
-let autoSlideTimer;
-
-function startAutoSlide() {
-    autoSlideTimer = setInterval(nextSlide, 7000);
-}
-
-function stopAutoSlide() {
-    clearInterval(autoSlideTimer);
+function previousTestimonial() {
+    const prevIndex = (currentTestimonialIndex - 1 + totalTestimonials) % totalTestimonials;
+    showTestimonial(prevIndex);
 }
 
 // Initialize carousel when page loads
@@ -56,27 +89,69 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize number animation
     animateNumbers();
     
-    // Initialize carousel
-    showSlide(0);
-    
-    // Start auto-slide
-    startAutoSlide();
-    
-    // Pause auto-slide on hover
-    const carousel = document.querySelector('.testimonial-carousel');
-    if (carousel) {
-        carousel.addEventListener('mouseenter', stopAutoSlide);
-        carousel.addEventListener('mouseleave', startAutoSlide);
-    }
-    
-    // Add keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft') {
-            previousSlide();
-        } else if (e.key === 'ArrowRight') {
-            nextSlide();
+    // Initialize client testimonials carousel if on clients page
+    const clientTrack = document.getElementById('clientTrack');
+    if (clientTrack) {
+        showClientSlide(0);
+        startClientAuto();
+        
+        // Add event listeners
+        const prevBtn = document.getElementById('clientPrev');
+        const nextBtn = document.getElementById('clientNext');
+        const dots = document.querySelectorAll('.client-testimonials .dot');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevClientSlide);
         }
-    });
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextClientSlide);
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showClientSlide(index));
+        });
+        
+        // Pause auto-advance on hover
+        const carousel = document.querySelector('.client-testimonials');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', stopClientAuto);
+            carousel.addEventListener('mouseleave', startClientAuto);
+        }
+    }
+
+    // Initialize testimonials carousel if on students page
+    const studentTrack = document.getElementById('carouselTrack');
+    if (studentTrack) {
+        showTestimonial(0);
+        
+        // Add event listeners for navigation buttons
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', previousTestimonial);
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextTestimonial);
+        }
+        
+        // Add event listeners for indicators
+        const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => showTestimonial(index));
+        });
+        
+        // Add keyboard navigation for student testimonials
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                previousTestimonial();
+            } else if (e.key === 'ArrowRight') {
+                nextTestimonial();
+            }
+        });
+    }
 });
 
 // Number counting animation

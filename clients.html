@@ -29,7 +29,7 @@
     <section class="why-tcc-hero">
         <div class="why-tcc-content">
             <h1>Why <span class="highlight">TCC?</span></h1>
-            <p>CHANGE THIS: Tufts Consulting Collective combines rigorous student talent with professional-grade consulting frameworks to deliver meaningful, cost-effective solutions. Whether you're a non-profit, startup, or established company, TCC provides expert analysis, strategic recommendations, and actionable insights tailored to your unique challenges.</p>
+            <p>Tufts Consulting Collective combines rigorous student talent with professional-grade consulting frameworks to deliver meaningful, cost-effective solutions. Whether you're a non-profit, startup, or established company, TCC provides expert analysis, strategic recommendations, and actionable insights tailored to your unique challenges.</p>
         </div>
     </section>
 
@@ -162,97 +162,66 @@
         </div>
     </section>
 
-    <!-- Client Testimonials Carousel -->
-    <section class="client-testimonial">
-        <div class="testimonial-carousel">
-            <div class="carousel-container">
-                <div class="carousel-track" id="testimonial-track">
-                    <!-- Slide 1 -->
-                    <div class="carousel-slide">
-                        <div class="testimonial-content">
-                            <div class="testimonial-image">
-                                <div class="image-placeholder">
-                                    <span>Client Image</span>
+    <!-- Client Testimonials Section -->
+    <section class="client-testimonials">
+        <div class="testimonials-container">
+            
+            <div class="testimonials-carousel">
+                <button class="carousel-nav prev" id="clientPrev">‹</button>
+                
+                <div class="testimonials-wrapper">
+                    <div class="testimonials-track" id="clientTrack">
+                        <!-- Khan Academy Testimonial -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-content">
+                                <div class="testimonial-images">
+                                    <img src="images/khan.png" alt="Khan Academy Logo" class="company-logo" />
+                                    <img src="images/khan_feature.jpg" alt="Khan Academy Office" class="company-photo" />
                                 </div>
-                                <div class="image-container">
-                                    <img src="images/khan.png" alt="Khan Academy" />
-                                </div>
-                                <div class="image-container">
-                                    <img src="images/clients.jpeg" alt="Healthcare Technology Company" />
-                                </div>
-                            </div>
-                            <div class="testimonial-text">
-                                <h2>Client Spotlight - Khan Academy</h2>
-                                <p class="overview-text">
-                                    A leading technology company specializing in innovative solutions for the healthcare industry. 
-                                    With over 500 employees and operations across multiple countries, they needed strategic guidance to enter new markets 
-                                    and optimize their product portfolio.
-                                </p>
-                                
-                                <h3>Challenge</h3>
-                                <p class="problem-text">
-                                    The company was facing challenges in identifying the most profitable market segments and needed a comprehensive 
-                                    competitive analysis to inform their expansion strategy. They required data-driven insights to make informed 
-                                    decisions about resource allocation and market entry timing.
-                                </p>
-                                
-                                <div class="testimonial-quote">
-                                    <blockquote>
-                                       ​​​​​"The Tufts Consulting Collective team was professional, well-organized, and sharp with their questions and insights. It was helpful to be working with them. Thank you TCC!"
-                                    </blockquote>
+                                <div class="testimonial-text">
+                                    <h3>Khan Academy</h3>
+                                    <p class="company-description">
+                                        A leading educational technology platform providing free online courses and resources to millions of learners worldwide. TCC partnered with Khan Academy to analyze user engagement patterns and optimize their learning platform.
+                                    </p>
+                                    <div class="quote-section">
+                                        <blockquote>
+                                            "The Tufts Consulting Collective team was professional, well-organized, and sharp with their questions and insights. It was helpful to be working with them. Thank you TCC!"
+                                        </blockquote>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Slide 2 -->
-                    <div class="carousel-slide">
-                        <div class="testimonial-content">
-                            <div class="testimonial-text">
-                                <h2>Client Spotlight - Reach Capital</h2>
-                                <p class="overview-text">
-                                    A rapidly growing fintech startup focused on digital banking solutions for small businesses. 
-                                    With ambitious expansion goals and limited market research resources, they partnered with TCC 
-                                    to develop a comprehensive go-to-market strategy for their new product line.
-                                </p>
-                                
-                                <h3>Challenge</h3>
-                                <p class="problem-text">
-                                    The startup needed to understand the competitive landscape in the small business banking sector 
-                                    and identify the most effective channels for customer acquisition. They also required pricing 
-                                    strategy recommendations to maximize market penetration while maintaining profitability.
-                                </p>
-                                
-                                <div class="testimonial-quote">
-                                    <blockquote>
-                                       "We enjoyed working with the Tufts Consulting Collective on a project about the use of Generative AI in college. The team was thoughtful in proposing research questions, designing their survey, and synthesizing their findings and analyses."
-                                    </blockquote>
+                        
+                        <!-- Reach Capital Testimonial -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-content">
+                                <div class="testimonial-text">
+                                    <h3>Reach Capital</h3>
+                                    <p class="company-description">
+                                        A venture capital firm focused on investing in early-stage education technology companies. TCC conducted market research on generative AI adoption in higher education to inform their investment strategy.
+                                    </p>
+                                    <div class="quote-section">
+                                        <blockquote>
+                                            "We enjoyed working with the Tufts Consulting Collective on a project about the use of Generative AI in college. The team was thoughtful in proposing research questions, designing their survey, and synthesizing their findings and analyses."
+                                        </blockquote>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="testimonial-image">
-                                <div class="image-placeholder">
-                                    <span>Client Image</span>
-                                </div>
-                                <div class="image-container">
-                                    <img src="images/reach.png" alt="Reach Capital" />
-                                </div>
-                                <div class="image-container">
-                                    <img src="images/tufts.jpeg" alt="FinTech Startup Office" />
+                                <div class="testimonial-images">
+                                    <img src="images/reach.png" alt="Reach Capital Logo" class="company-logo" />
+                                    <img src="images/tufts.jpeg" alt="Reach Capital Office" class="company-photo" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Carousel Controls -->
-                <div class="carousel-controls">
-                    <button class="carousel-btn" id="prev-btn" onclick="previousSlide()">←</button>
-                    <div class="carousel-indicators">
-                        <span class="indicator active" onclick="currentSlide(1)"></span>
-                        <span class="indicator" onclick="currentSlide(2)"></span>
-                    </div>
-                    <button class="carousel-btn" id="next-btn" onclick="nextSlide()">→</button>
-                </div>
+                <button class="carousel-nav next" id="clientNext">›</button>
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
             </div>
         </div>
     </section>
