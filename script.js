@@ -2,7 +2,81 @@
 document.getElementById('newsletter-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = this.querySelector('input[type="email"]').value;
-    window.location.href = `mailto:tcc@tufts.edu?subject=Newsletter%20Subscription&body=Email:%20${email}`;
+    window.location.href = `mailto:tuftsconsultingcollectiveinfo@151208122.mailchimpapp.com?subject=Newsletter%20Subscription&body=Email:%20${email}`;
+});
+
+// Carousel functionality
+let currentSlideIndex = 0;
+const totalSlides = 2;
+
+function showSlide(index) {
+    const track = document.getElementById('testimonial-track');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    if (!track) return;
+    
+    // Update slide position
+    track.style.transform = `translateX(-${index * 50}%)`;
+    
+    // Update indicators
+    indicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === index);
+    });
+    
+    currentSlideIndex = index;
+}
+
+function nextSlide() {
+    const nextIndex = (currentSlideIndex + 1) % totalSlides;
+    showSlide(nextIndex);
+}
+
+function previousSlide() {
+    const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+    showSlide(prevIndex);
+}
+
+function currentSlide(index) {
+    showSlide(index - 1);
+}
+
+// Auto-advance carousel every 7 seconds
+let autoSlideTimer;
+
+function startAutoSlide() {
+    autoSlideTimer = setInterval(nextSlide, 7000);
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideTimer);
+}
+
+// Initialize carousel when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize number animation
+    animateNumbers();
+    
+    // Initialize carousel
+    showSlide(0);
+    
+    // Start auto-slide
+    startAutoSlide();
+    
+    // Pause auto-slide on hover
+    const carousel = document.querySelector('.testimonial-carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoSlide);
+        carousel.addEventListener('mouseleave', startAutoSlide);
+    }
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            previousSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
 });
 
 // Number counting animation
@@ -45,6 +119,3 @@ function animateNumbers() {
         observer.observe(number);
     });
 }
-
-// Initialize the number animation when the page loads
-document.addEventListener('DOMContentLoaded', animateNumbers);
