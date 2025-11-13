@@ -151,7 +151,111 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Initialize teams gallery if on about page
+    initializeTeamsGallery();
 });
+
+// Teams Gallery Carousel functionality
+let currentTeamSlide = 0;
+const totalTeamSlides = 5;
+
+function showTeamSlide(index) {
+    const track = document.getElementById('teamsTrack');
+    const dotsContainer = document.getElementById('teamsDots');
+    
+    if (!track || !dotsContainer) return;
+    
+    // Ensure index is within bounds
+    currentTeamSlide = Math.max(0, Math.min(index, totalTeamSlides - 1));
+    
+    // Calculate transform - move by 20% for each slide (each photo is 20% of track width)
+    const translateX = -(currentTeamSlide * 20);
+    track.style.transform = `translateX(${translateX}%)`;
+    
+    // Update dots
+    updateTeamDots();
+}
+
+function updateTeamDots() {
+    const dotsContainer = document.getElementById('teamsDots');
+    if (!dotsContainer) return;
+    
+    // Clear existing dots
+    dotsContainer.innerHTML = '';
+    
+    // Create dots for all 5 slides
+    for (let i = 0; i < totalTeamSlides; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'gallery-dot';
+        dot.setAttribute('data-slide', i);
+        if (i === currentTeamSlide) {
+            dot.classList.add('active');
+        }
+        dot.addEventListener('click', () => showTeamSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+}
+
+function nextTeamSlide() {
+    const nextIndex = (currentTeamSlide + 1) % totalTeamSlides;
+    showTeamSlide(nextIndex);
+}
+
+function prevTeamSlide() {
+    const prevIndex = (currentTeamSlide - 1 + totalTeamSlides) % totalTeamSlides;
+    showTeamSlide(prevIndex);
+}
+
+function initializeTeamsGallery() {
+    const teamsTrack = document.getElementById('teamsTrack');
+    if (teamsTrack) {
+        // Initialize carousel
+        showTeamSlide(0);
+        
+        // Add event listeners for navigation buttons
+        const prevBtn = document.getElementById('teamsPrev');
+        const nextBtn = document.getElementById('teamsNext');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevTeamSlide);
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextTeamSlide);
+        }
+        
+        // Auto-slide functionality
+        let autoSlideInterval = setInterval(() => {
+            nextTeamSlide();
+        }, 5000); // Change slide every 5 seconds
+        
+        // Pause auto-slide on hover
+        const gallery = document.querySelector('.teams-gallery');
+        if (gallery) {
+            gallery.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            gallery.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(() => {
+                    nextTeamSlide();
+                }, 5000);
+            });
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (teamsTrack && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                if (e.key === 'ArrowLeft') {
+                    prevTeamSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextTeamSlide();
+                }
+            }
+        });
+    }
+}
 
 // Number counting animation
 function animateNumbers() {
