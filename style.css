@@ -844,25 +844,25 @@ body {
 
 .clients-grid {
     display: grid;
-    grid-template-columns: repeat(4, 180px);
-    gap: 30px;
-    max-width: 1000px;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 25px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px 40px;
     justify-content: center;
 }
 
 .client-logo {
-    background: var(--white);
-    padding: 15px;
+    background: transparent;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 0;
     transition: all 0.3s ease;
-    width: 180px;
-    height: 120px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    min-height: 100px;
+    border: none;
+    box-shadow: none;
     animation: fadeInUp 0.6s ease-out;
 }
 
@@ -878,10 +878,20 @@ body {
 .client-logo:nth-child(10) { animation-delay: 1.0s; }
 .client-logo:nth-child(11) { animation-delay: 1.1s; }
 .client-logo:nth-child(12) { animation-delay: 1.2s; }
+.client-logo:nth-child(13) { animation-delay: 1.3s; }
+.client-logo:nth-child(14) { animation-delay: 1.4s; }
+.client-logo:nth-child(15) { animation-delay: 1.5s; }
+.client-logo:nth-child(16) { animation-delay: 1.6s; }
+.client-logo:nth-child(17) { animation-delay: 1.7s; }
+.client-logo:nth-child(18) { animation-delay: 1.8s; }
+.client-logo:nth-child(19) { animation-delay: 1.9s; }
+.client-logo:nth-child(20) { animation-delay: 2.0s; }
+.client-logo:nth-child(21) { animation-delay: 2.1s; }
 
 .client-logo:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: none;
+    border-color: transparent;
 }
 
 .client-logo img {
@@ -890,14 +900,15 @@ body {
     width: auto;
     height: auto;
     object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.7;
+    filter: none;
+    opacity: 0.9;
     transition: all 0.3s ease;
 }
 
 .client-logo:hover img {
-    filter: grayscale(0%);
+    filter: brightness(1.1) saturate(1.1);
     opacity: 1;
+    transform: scale(1.05);
 }
 
 .client-logo-placeholder {
@@ -1464,14 +1475,16 @@ body {
 }
 
 /* Week in the Life Timeline Section */
+/* Week in the Life Section */
 .week-in-life {
     padding: 80px 0;
-    background: var(--white);
+    background: var(--background-gray);
     width: 100%;
+    margin: 0;
 }
 
 .week-container {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 40px;
 }
@@ -1491,116 +1504,111 @@ body {
     font-size: 18px;
     color: var(--text-gray);
     line-height: 1.7;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     text-align: center;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Timeline Styles */
+/* New Centered Timeline */
 .timeline {
     position: relative;
-    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0;
 }
 
+/* Vertical center line */
 .timeline::before {
     content: '';
     position: absolute;
-    left: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 0;
-    height: calc(100% - 50px);
-    width: 3px;
-    background: linear-gradient(to bottom, var(--primary-blue), var(--secondary-blue));
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom,
+        var(--primary-blue) 0%,
+        var(--secondary-blue) 50%,
+        var(--primary-blue) 100%);
     border-radius: 2px;
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 50px;
-    padding-left: 80px;
-    animation: fadeInUp 0.6s ease-out;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.timeline-item:nth-child(1) { animation-delay: 0.1s; }
-.timeline-item:nth-child(2) { animation-delay: 0.2s; }
-.timeline-item:nth-child(3) { animation-delay: 0.3s; }
-.timeline-item:nth-child(4) { animation-delay: 0.4s; }
-.timeline-item:nth-child(5) { animation-delay: 0.5s; }
-.timeline-item:nth-child(6) { animation-delay: 0.6s; }
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
 
+/* Day marker in center */
 .timeline-marker {
     position: absolute;
-    left: -49px;
-    top: 8px;
-    width: 60px;
-    height: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
     background: var(--white);
-    border: 4px solid var(--primary-blue);
+    border: 5px solid var(--primary-blue);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
-    box-shadow: 0 4px 12px rgba(74, 123, 167, 0.2);
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(74, 123, 167, 0.3);
     transition: all 0.3s ease;
 }
 
+.timeline-marker:hover {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 6px 25px rgba(74, 123, 167, 0.5);
+}
+
 .timeline-marker.weekend {
-    border-color: var(--secondary-blue);
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-color: var(--secondary-blue);
+}
+
+.day-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    letter-spacing: 0.5px;
 }
 
 .timeline-marker.weekend .day-label {
     color: var(--white);
 }
 
-.timeline-marker:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(74, 123, 167, 0.3);
-}
-
-.day-label {
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--primary-blue);
-    letter-spacing: 0.5px;
-}
-
+/* Content box - centered */
 .timeline-content {
     background: var(--white);
-    padding: 0;
-    border-radius: 12px;
-    border-left: 4px solid var(--primary-blue);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
-    position: relative;
-    margin-bottom: 20px;
-    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    min-height: 300px;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
 .timeline-content:hover {
-    transform: translateX(5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-}
-
-.timeline-text {
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .timeline-image {
-    height: 300px;
-    overflow: hidden;
     position: relative;
-    border-radius: 12px;
+    overflow: hidden;
+    min-height: 350px;
 }
 
 .timeline-image img {
@@ -1608,80 +1616,47 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.3s ease;
-    display: block;
+    transition: transform 0.5s ease;
 }
 
 .timeline-content:hover .timeline-image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
-.timeline-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, 
-        rgba(74, 123, 167, 0.1) 0%, 
-        rgba(74, 123, 167, 0.05) 50%, 
-        rgba(74, 123, 167, 0.1) 100%);
-    z-index: 1;
+.timeline-text {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
 }
 
-.timeline-content h3 {
+.timeline-text h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
-    margin-bottom: 10px;
     color: var(--dark-text);
-    letter-spacing: 0.3px;
+    margin: 0;
 }
 
 .time-badge {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: var(--white);
-    padding: 4px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
-    margin-bottom: 15px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     width: fit-content;
 }
 
 .timeline-text p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--text-gray);
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-
-.activity-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tag {
-    background: rgba(74, 123, 167, 0.1);
-    color: var(--primary-blue);
-    padding: 4px 12px;
-    border-radius: 15px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-    border: 1px solid rgba(74, 123, 167, 0.2);
-    transition: all 0.2s ease;
-}
-
-.tag:hover {
-    background: rgba(74, 123, 167, 0.2);
-    transform: scale(1.05);
+    line-height: 1.8;
+    margin: 0;
 }
 
 /* Week CTA Section */
@@ -1786,10 +1761,12 @@ body {
         padding: 0;
         grid-template-columns: 1fr;
         min-height: auto;
+        align-items: stretch;
     }
     
     .timeline-image {
-        height: 200px;
+        height: 250px;
+        min-height: 250px;
         order: -1;
         border-radius: 8px;
     }
@@ -1799,7 +1776,8 @@ body {
     }
     
     .timeline-text {
-        padding: 20px;
+        padding: 25px;
+        height: auto;
     }
     
     .timeline-text h3 {
@@ -1887,8 +1865,9 @@ body {
     
     
     .clients-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 25px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        max-width: 1000px;
     }
     
     .testimonial-content {
@@ -1978,15 +1957,14 @@ body {
     }
     
     .clients-grid {
-        grid-template-columns: repeat(2, 150px);
-        gap: 20px;
-        padding: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        padding: 15px 20px;
     }
 
     .client-logo {
-        padding: 12px;
-        width: 150px;
-        height: 100px;
+        padding: 15px;
+        min-height: 80px;
     }
     
     .client-logo-placeholder {
@@ -3537,20 +3515,20 @@ body {
     margin: 0;
 }
 
-/* Timeline Section */
-.timeline-section {
+/* Recruitment Timeline Section (Join Page) */
+.recruitment-timeline-section {
     padding: 80px 0;
     background: var(--background-gray);
     width: 100%;
 }
 
-.timeline-section .container {
+.recruitment-timeline-section .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
 }
 
-.timeline-section h2 {
+.recruitment-timeline-section h2 {
     font-family: 'Poppins', 'Inter', sans-serif;
     font-size: 42px;
     font-weight: 700;
@@ -3561,7 +3539,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-.timeline-subtitle {
+.recruitment-timeline-subtitle {
     font-size: 18px;
     font-style: italic;
     color: var(--text-gray);
@@ -3569,7 +3547,7 @@ body {
     margin-bottom: 60px;
 }
 
-.timeline-container {
+.recruitment-timeline-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -3579,7 +3557,7 @@ body {
     position: relative;
 }
 
-.timeline-item {
+.recruitment-timeline-item {
     flex: 1;
     max-width: 230px;
     min-height: 180px;
@@ -3596,24 +3574,24 @@ body {
     justify-content: flex-start;
 }
 
-.timeline-item:nth-child(1) { animation-delay: 0.1s; }
-.timeline-item:nth-child(3) { animation-delay: 0.2s; }
-.timeline-item:nth-child(5) { animation-delay: 0.3s; }
-.timeline-item:nth-child(7) { animation-delay: 0.4s; }
+.recruitment-timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.recruitment-timeline-item:nth-child(3) { animation-delay: 0.2s; }
+.recruitment-timeline-item:nth-child(5) { animation-delay: 0.3s; }
+.recruitment-timeline-item:nth-child(7) { animation-delay: 0.4s; }
 
-.timeline-item:hover {
+.recruitment-timeline-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(74, 123, 167, 0.12);
     border-color: var(--primary-blue);
 }
 
-.timeline-icon {
+.recruitment-timeline-icon {
     font-size: 40px;
     margin-bottom: 15px;
     display: block;
 }
 
-.timeline-item h3 {
+.recruitment-timeline-item h3 {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -3621,27 +3599,27 @@ body {
     margin-bottom: 12px;
 }
 
-.timeline-date {
+.recruitment-timeline-date {
     font-size: 13px;
     color: var(--text-gray);
     font-weight: 400;
     margin-bottom: 8px;
 }
 
-.timeline-location {
+.recruitment-timeline-location {
     font-size: 13px;
     color: var(--text-gray);
     margin-bottom: 10px;
 }
 
-.timeline-note {
+.recruitment-timeline-note {
     font-size: 12px;
     color: var(--text-gray);
     font-style: italic;
     margin-bottom: 8px;
 }
 
-.timeline-arrow {
+.recruitment-timeline-arrow {
     font-size: 28px;
     color: var(--primary-blue);
     font-weight: 400;
@@ -3751,16 +3729,16 @@ body {
 
 /* Responsive Design for Join Page */
 @media (max-width: 1024px) {
-    .timeline-container {
+    .recruitment-timeline-container {
         flex-wrap: wrap;
         gap: 15px;
     }
 
-    .timeline-arrow {
+    .recruitment-timeline-arrow {
         display: none;
     }
 
-    .timeline-item {
+    .recruitment-timeline-item {
         max-width: 45%;
         min-height: 180px;
     }
@@ -3802,25 +3780,25 @@ body {
     }
 
     .why-join-section .container,
-    .timeline-section .container,
+    .recruitment-timeline-section .container,
     .faq-section .container {
         padding: 0 20px;
     }
 
     .why-join-section,
-    .timeline-section,
+    .recruitment-timeline-section,
     .faq-section {
         padding: 60px 0;
     }
 
     .why-join-section h2,
-    .timeline-section h2,
+    .recruitment-timeline-section h2,
     .faq-section h2 {
         font-size: 32px;
         margin-bottom: 40px;
     }
 
-    .timeline-subtitle {
+    .recruitment-timeline-subtitle {
         font-size: 18px;
         margin-bottom: 40px;
     }
@@ -3829,17 +3807,17 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .timeline-container {
+    .recruitment-timeline-container {
         flex-direction: column;
         gap: 20px;
     }
 
-    .timeline-item {
+    .recruitment-timeline-item {
         max-width: 100%;
         min-height: 160px;
     }
 
-    .timeline-arrow {
+    .recruitment-timeline-arrow {
         display: none;
     }
 
