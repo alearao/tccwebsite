@@ -192,63 +192,82 @@
     <!-- Client Testimonials Section -->
     <section class="client-testimonials">
         <div class="testimonials-container">
-            
-            <div class="testimonials-carousel">
-                <button class="carousel-nav prev" id="clientPrev">‹</button>
-                
-                <div class="testimonials-wrapper">
-                    <div class="testimonials-track" id="clientTrack">
-                        <!-- Khan Academy Testimonial -->
-                        <div class="testimonial-slide">
-                            <div class="testimonial-content">
-                                <div class="testimonial-images">
-                                    <img src="images/khan.png" alt="Khan Academy Logo" class="company-logo" />
-                                    <img src="images/khan_feature.jpg" alt="Khan Academy Office" class="company-photo" />
-                                </div>
-                                <div class="testimonial-text">
+            <h2>Client Testimonials</h2>
+
+            <div class="carousel-container">
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="clientCarouselTrack">
+                        <!-- Khan Academy Card -->
+                        <div class="carousel-card">
+                            <div class="card-header">
+                                <img src="images/khan.png" alt="Khan Academy" class="client-logo">
+                                <div class="client-info">
                                     <h3>Khan Academy</h3>
-                                    <p class="company-description">
-                                        A leading educational technology platform providing free online courses and resources to millions of learners worldwide. TCC partnered with Khan Academy to analyze user engagement patterns and optimize their learning platform.
-                                    </p>
-                                    <div class="quote-section">
-                                        <blockquote>
-                                            "The Tufts Consulting Collective team was professional, well-organized, and sharp with their questions and insights. It was helpful to be working with them. Thank you TCC!"
-                                        </blockquote>
-                                    </div>
+                                    <p class="client-type">EdTech Platform</p>
+                                </div>
+                            </div>
+                            <div class="card-image">
+                                <img src="images/khan_feature.jpg" alt="Khan Academy Office">
+                            </div>
+                            <div class="card-content">
+                                <p class="project-description">
+                                    A leading educational technology platform providing free online courses and resources to millions of learners worldwide. TCC partnered with Khan Academy to analyze user engagement patterns and optimize their learning platform.
+                                </p>
+                                <div class="testimonial-quote">
+                                    <svg class="quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9.135 9h2.012L9.135 15H6.057l2.07-6H5.07l2.065-6h4.058L9.135 9zm8 0h2.012L17.135 15h-3.078l2.07-6h-3.056l2.064-6h4.058L17.135 9z" fill="currentColor"/>
+                                    </svg>
+                                    <p>"The Tufts Consulting Collective team was professional, well-organized, and sharp with their questions and insights. It was helpful to be working with them. Thank you TCC!"</p>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Reach Capital Testimonial -->
-                        <div class="testimonial-slide">
-                            <div class="testimonial-content">
-                                <div class="testimonial-text">
+
+                        <!-- Reach Capital Card -->
+                        <div class="carousel-card">
+                            <div class="card-header">
+                                <img src="images/reach.png" alt="Reach Capital" class="client-logo">
+                                <div class="client-info">
                                     <h3>Reach Capital</h3>
-                                    <p class="company-description">
-                                        A venture capital firm focused on investing in early-stage education technology companies. TCC conducted market research on generative AI adoption in higher education to inform their investment strategy.
-                                    </p>
-                                    <div class="quote-section">
-                                        <blockquote>
-                                            "We enjoyed working with the Tufts Consulting Collective on a project about the use of Generative AI in college. The team was thoughtful in proposing research questions, designing their survey, and synthesizing their findings and analyses."
-                                        </blockquote>
-                                    </div>
+                                    <p class="client-type">Venture Capital</p>
                                 </div>
-                                <div class="testimonial-images">
-                                    <img src="images/reach.png" alt="Reach Capital Logo" class="company-logo" />
-                                    <img src="images/tufts.jpeg" alt="Reach Capital Office" class="company-photo" />
+                            </div>
+                            <div class="card-image">
+                                <img src="images/tufts.jpeg" alt="Reach Capital Office">
+                            </div>
+                            <div class="card-content">
+                                <p class="project-description">
+                                    A venture capital firm focused on investing in early-stage education technology companies. TCC conducted market research on generative AI adoption in higher education to inform their investment strategy.
+                                </p>
+                                <div class="testimonial-quote">
+                                    <svg class="quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9.135 9h2.012L9.135 15H6.057l2.07-6H5.07l2.065-6h4.058L9.135 9zm8 0h2.012L17.135 15h-3.078l2.07-6h-3.056l2.064-6h4.058L17.135 9z" fill="currentColor"/>
+                                    </svg>
+                                    <p>"We enjoyed working with the Tufts Consulting Collective on a project about the use of Generative AI in college. The team was thoughtful in proposing research questions, designing their survey, and synthesizing their findings and analyses."</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <button class="carousel-nav next" id="clientNext">›</button>
-            </div>
-            
-            <!-- Carousel Indicators -->
-            <div class="carousel-dots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
+
+                <!-- Navigation Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-button prev" id="clientPrevBtn" aria-label="Previous testimonial">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-indicators" id="clientIndicators">
+                        <button class="indicator active" data-index="0" aria-label="Go to slide 1"></button>
+                        <button class="indicator" data-index="1" aria-label="Go to slide 2"></button>
+                    </div>
+
+                    <button class="carousel-button next" id="clientNextBtn" aria-label="Next testimonial">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
