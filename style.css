@@ -3496,29 +3496,109 @@ body {
 
 /* Recruitment Notice */
 .recruitment-notice {
-    background: var(--background-gray);
-    padding: 20px 0;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    padding: 40px 0;
     text-align: center;
-    border-top: 2px solid var(--border-gray);
-    border-bottom: 2px solid var(--border-gray);
-    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recruitment-notice::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.recruitment-notice::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-20px) translateX(10px);
+    }
 }
 
 .notice-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .notice-content p {
-    font-size: 20px;
-    color: var(--text-gray);
-    margin: 0;
+    font-size: 24px;
+    color: var(--white);
+    margin: 0 0 25px 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .notice-content strong {
     font-weight: 700;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.application-link-button {
+    display: inline-block;
+    background: var(--white);
     color: var(--primary-blue);
+    padding: 16px 48px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.application-link-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.application-link-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    background: var(--background-gray);
+    color: var(--primary-blue);
+}
+
+.application-link-button:hover::before {
+    left: 100%;
+}
+
+.application-link-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Why Join TCC Section */
@@ -3609,33 +3689,63 @@ body {
 /* Recruitment Timeline Section (Join Page) */
 .recruitment-timeline-section {
     padding: 80px 0;
-    background: var(--background-gray);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.recruitment-timeline-section::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite;
+}
+
+.recruitment-timeline-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -5%;
+    width: 350px;
+    height: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 12s ease-in-out infinite reverse;
 }
 
 .recruitment-timeline-section .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .recruitment-timeline-section h2 {
     font-family: 'Poppins', 'Inter', sans-serif;
     font-size: 42px;
     font-weight: 700;
-    color: var(--dark-text);
+    color: var(--white);
     text-align: center;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .recruitment-timeline-subtitle {
     font-size: 18px;
     font-style: italic;
-    color: var(--text-gray);
+    color: var(--white);
     text-align: center;
     margin-bottom: 60px;
+    opacity: 0.95;
 }
 
 .recruitment-timeline-container {
@@ -3655,25 +3765,43 @@ body {
     text-align: center;
     padding: 30px 20px;
     background: var(--white);
-    border-radius: 4px;
-    border: 1px solid var(--border-gray);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     animation: fadeInUp 0.6s ease-out;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.recruitment-timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .recruitment-timeline-item:nth-child(1) { animation-delay: 0.1s; }
 .recruitment-timeline-item:nth-child(3) { animation-delay: 0.2s; }
 .recruitment-timeline-item:nth-child(5) { animation-delay: 0.3s; }
 .recruitment-timeline-item:nth-child(7) { animation-delay: 0.4s; }
+.recruitment-timeline-item:nth-child(9) { animation-delay: 0.5s; }
 
 .recruitment-timeline-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(74, 123, 167, 0.12);
-    border-color: var(--primary-blue);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.recruitment-timeline-item:hover::before {
+    transform: scaleX(1);
 }
 
 .recruitment-timeline-icon {
@@ -3711,10 +3839,12 @@ body {
 }
 
 .recruitment-timeline-arrow {
-    font-size: 28px;
-    color: var(--primary-blue);
-    font-weight: 400;
+    font-size: 32px;
+    color: var(--white);
+    font-weight: 700;
     flex-shrink: 0;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .apply-button {
@@ -3859,7 +3989,7 @@ body {
     }
 
     .recruitment-notice {
-        padding: 15px 0;
+        padding: 30px 0;
     }
 
     .notice-content {
@@ -3867,7 +3997,13 @@ body {
     }
 
     .notice-content p {
-        font-size: 15px;
+        font-size: 18px;
+        margin: 0 0 20px 0;
+    }
+
+    .application-link-button {
+        padding: 14px 36px;
+        font-size: 16px;
     }
 
     .why-join-section .container,
