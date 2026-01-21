@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Tufts Consulting Collective</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .resources-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid var(--border-gray);
+            padding: 40px;
+            transition: border-color 0.2s ease;
+        }
+
+        .resource-card:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .resource-card h2 {
+            font-size: 20px;
+            color: var(--dark-text);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .resource-card p {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .resource-link {
+            display: inline-block;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .resource-link:hover {
+            color: var(--secondary-blue);
+        }
+
+        .resource-link::after {
+            content: ' →';
+        }
+
+        .protected-card {
+            grid-column: 1 / -1;
+            background: var(--background-gray);
+            border: 1px solid var(--border-gray);
+            padding: 50px;
+        }
+
+        .protected-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .protected-header h2 {
+            font-size: 20px;
+            color: var(--dark-text);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .protected-badge {
+            font-size: 12px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .protected-card > p {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .password-prompt {
+            display: none;
+            max-width: 400px;
+        }
+
+        .password-prompt.active {
+            display: block;
+        }
+
+        .password-form {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .password-input {
+            flex: 1;
+            padding: 12px 16px;
+            font-size: 14px;
+            border: 1px solid var(--border-gray);
+            background: white;
+            font-family: inherit;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .password-submit {
+            padding: 12px 24px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .password-submit:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        .error-message {
+            color: #d32f2f;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .protected-content {
+            display: none;
+        }
+
+        .protected-content.unlocked {
+            display: block;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .resource-list li {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .resource-list li:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .resource-list a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+
+        .resource-list a:hover {
+            color: var(--primary-blue);
+        }
+
+        .lock-btn {
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--text-gray);
+            border: 1px solid var(--border-gray);
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s ease;
+        }
+
+        .lock-btn:hover {
+            border-color: var(--dark-text);
+            color: var(--dark-text);
+        }
+
+        @media (max-width: 768px) {
+            .resources-container {
+                padding: 50px 20px;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .resource-card {
+                padding: 30px;
+            }
+
+            .protected-card {
+                padding: 30px;
+            }
+
+            .password-form {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .password-input {
+                width: 100%;
+            }
+
+            .password-submit {
+                width: 100%;
+            }
+
+            .resource-list {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-list li:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="navbar">
+        <nav class="nav-container">
+            <div class="logo-section">
+                <a href="index.html">
+                    <img src="images/tcclogo.png" alt="Tufts Consulting Collective Logo" class="logo-image">
+                </a>
+            </div>
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="clients.html" class="nav-link">Clients</a>
+                <a href="students.html" class="nav-link">Students</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="join.html" class="nav-link">Join</a>
+                <a href="resources.html" class="nav-link active">Resources</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-about">
+        <div class="hero-about-content">
+            <h1><span class="hero-subtitle">Access</span> OUR <span class="highlight">RESOURCES</span></h1>
+            <p><strong>Materials and information for members and alumni.</strong></p>
+        </div>
+    </section>
+
+    <!-- Resources Content -->
+    <div class="resources-container">
+        <div class="resources-grid">
+            <!-- GIM Slides Card -->
+            <div class="resource-card">
+                <h2>GIM Slides</h2>
+                <p>General Interest Meeting presentation materials.</p>
+                <a href="gimslides.pdf" class="resource-link" target="_blank">View Slides</a>
+            </div>
+
+
+
+            <!-- Password Protected Member Resources -->
+            <div class="protected-card">
+                <div class="protected-header">
+                    <h2>Member Resources</h2>
+                    <span class="protected-badge">Password Required</span>
+                </div>
+                <p>Internal resources for current members and alumni.</p>
+
+                <div class="password-prompt active" id="passwordPrompt">
+                    <div class="password-form">
+                        <input
+                            type="password"
+                            class="password-input"
+                            id="passwordInput"
+                            placeholder="Enter password"
+                            autocomplete="off"
+                        >
+                        <button class="password-submit" onclick="checkPassword()">Access</button>
+                    </div>
+                    <p class="error-message" id="errorMessage">Incorrect password.</p>
+                </div>
+
+                <div class="protected-content" id="protectedContent">
+                    <ul class="resource-list">
+                        <li>
+                            <a href="#" target="_blank">Alumni Database - Coming Soon!</a>
+                        </li>
+                        <li>
+                            <a href="https://drive.google.com/drive/u/1/folders/17vZBILigzOSgdJ5kzLFOVIjTzESkBaIF" target="_blank">Casebooks Drive</a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank">Past Finals Slides - Coming Soon!</a>
+                        </li>
+                        <li>
+                            <a href="https://drive.google.com/drive/u/1/folders/1XcyZzanP5QLnNDPp_3nX5t1s0YCdvobJ" target="_blank">Slide Materials</a>
+                        </li>
+                    </ul>
+                    <button class="lock-btn" onclick="lockContent()">Lock</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3>Tufts Consulting Collective</h3>
+                <p>Tufts University, Medford, MA 02155</p>
+                <p><a href="mailto:tuftsconsultingcollective@gmail.com">tuftsconsultingcollective@gmail.com</a></p>
+                <div class="social-links">
+                    <a href="https://instagram.com/tuftsconsultingcollective" target="_blank">Instagram</a>
+                    <a href="https://www.linkedin.com/company/tufts-consulting-collective-about/posts/?feedView=all" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <h3>Subscribe to Newsletter</h3>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Tufts Consulting Collective</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Password protection functionality
+        const PASSWORD = "presidentj3rry2025"; // Change this to your desired password
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const errorMsg = document.getElementById('errorMessage');
+            const prompt = document.getElementById('passwordPrompt');
+            const content = document.getElementById('protectedContent');
+
+            if (input.value === PASSWORD) {
+                prompt.classList.remove('active');
+                content.classList.add('unlocked');
+                errorMsg.classList.remove('show');
+                input.value = '';
+            } else {
+                errorMsg.classList.add('show');
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        function lockContent() {
+            const prompt = document.getElementById('passwordPrompt');
+            const content = document.getElementById('protectedContent');
+
+            content.classList.remove('unlocked');
+            prompt.classList.add('active');
+        }
+
+        // Allow Enter key to submit password
+        document.getElementById('passwordInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>

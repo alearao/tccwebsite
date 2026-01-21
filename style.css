@@ -2626,7 +2626,7 @@ body {
 /* About Page - Hero Section */
 .hero-about {
     background: linear-gradient(rgba(74, 123, 167, 0.7), rgba(74, 123, 167, 0.7)),
-                url('images/funnyteam.jpg') center/cover;
+                url('images/bodaborg.jpeg') center/cover;
     color: var(--white);
     padding: 120px 40px;
     text-align: center;
@@ -3689,7 +3689,7 @@ body {
 /* Recruitment Timeline Section (Join Page) */
 .recruitment-timeline-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    background: linear-gradient(135deg, var(--white) 0%, var(--white) 100%);
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -3731,7 +3731,7 @@ body {
     font-family: 'Poppins', 'Inter', sans-serif;
     font-size: 42px;
     font-weight: 700;
-    color: var(--white);
+    color: var(--primary-blue);
     text-align: center;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -3742,7 +3742,7 @@ body {
 .recruitment-timeline-subtitle {
     font-size: 18px;
     font-style: italic;
-    color: var(--white);
+    color: var(--primary-blue);
     text-align: center;
     margin-bottom: 60px;
     opacity: 0.95;
@@ -3840,7 +3840,7 @@ body {
 
 .recruitment-timeline-arrow {
     font-size: 32px;
-    color: var(--white);
+    color: var(--secondary-blue);
     font-weight: 700;
     flex-shrink: 0;
     opacity: 0.9;
