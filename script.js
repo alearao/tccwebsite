@@ -32,18 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Newsletter form submission
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('newsletter-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            window.location.href = `mailto:tuftsconsultingcollectiveinfo@151208122.mailchimpapp.com?subject=Newsletter%20Subscription&body=Email:%20${email}`;
-        });
-    }
-});
-
 // Client Testimonials Carousel - Modern Implementation
 class ClientCarousel {
     constructor() {

@@ -252,6 +252,24 @@ body {
     background-color: var(--secondary-blue);
 }
 
+.elist-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 200;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-family: 'Nunito Sans', 'Poppins', sans-serif;
+}
+
+.elist-link:hover {
+    background-color: var(--secondary-blue);
+}
+
 .footer-bottom {
     border-top: 1px solid var(--border-gray);
     max-width: 1200px;
@@ -2626,7 +2644,7 @@ body {
 /* About Page - Hero Section */
 .hero-about {
     background: linear-gradient(rgba(74, 123, 167, 0.7), rgba(74, 123, 167, 0.7)),
-                url('images/bodaborg.jpeg') center/cover;
+                url('images/funnyteam.jpg') center/cover;
     color: var(--white);
     padding: 120px 40px;
     text-align: center;
@@ -2635,6 +2653,11 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
+}
+
+.hero-resources {
+    background: linear-gradient(rgba(74, 123, 167, 0.7), rgba(74, 123, 167, 0.7)),
+                url('images/bodaborg.jpeg') center/cover;
 }
 
 .hero-about-content {
